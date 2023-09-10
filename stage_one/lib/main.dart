@@ -33,43 +33,51 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return webPage? MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.teal,
         body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              CircleAvatar(
-                radius: 130.0,
-                backgroundColor: Colors.teal,
-                backgroundImage: AssetImage("assets/zach.jpg"),
-              ),
-              Text(
-                'Zacchaeus Oluwole',
-                style: TextStyle(
-                  fontSize: 40.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+          child: Container(
+            width: screenWidth,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                
+                CircleAvatar(
+                  radius: 130.0,
+                  backgroundColor: Colors.teal,
+                  backgroundImage: AssetImage("assets/zach.jpg"),
                 ),
-              ),
-              SizedBox(
-                width: 350,
-                height: 35,
-                child: ElevatedButton(
-                  child: Text(
-                    'Open Github',
-                    style: TextStyle(color: Colors.white),
+                Text(
+                  'Zacchaeus Oluwole',
+                  style: TextStyle(
+                    fontSize: 40.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
-                  onPressed: (){
-                    setState(() {
-                      webPage = !webPage;
-                    });
-                  }
                 ),
-              )
-            ],
+                SizedBox(
+                  width: 350,
+                  height: 35,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.teal.shade700),
+                    ),
+                    child: Text(
+                      'Open Github',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: (){
+                      setState(() {
+                        webPage = !webPage;
+                      });
+                    }
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
